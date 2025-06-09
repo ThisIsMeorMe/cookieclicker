@@ -42,6 +42,17 @@ Audio=function(src){
 	else return new realAudio(src);
 };
 
+var autoclicker = setInterval(function(){
+  try {
+    Game.lastClick -= 1000;
+    document.getElementById('bigCookie').click();
+  } catch (err) {
+    console.error('Stopping auto clicker');
+    clearInterval(autoclicker);
+  }
+}, 1);
+
+
 if(!Array.prototype.indexOf) {
     Array.prototype.indexOf = function(needle) {
         for(var i = 0; i < this.length; i++) {
